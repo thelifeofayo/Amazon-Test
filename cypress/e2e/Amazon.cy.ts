@@ -1,7 +1,6 @@
  /// <reference types="cypress" />
  // using POM
 import Amazon from "../POM/Amazon"
-import { xpath } from 'cypress-xpath';
 describe('template spec', () => {
   const az =new Amazon();
     //it('passes', () => {
@@ -32,14 +31,21 @@ it('should click on Tablet accesories', () =>{
   az.setHamburger()
   az.setClickComputers()
   cy.wait(6000)
-  cy.get("ul[class='hmenu hmenu-visible hmenu-translateX'] li:nth-child(15) a:nth-child(1)").click()
-
+  az.setClickTabletaccesories()
 })
-/*it('should select JTECH', () =>{
+it('should select JTECH', () =>{
+  cy.visit('https://www.amazon.com/')
   az.setHamburger()
   az.setClickComputers()
-  cy.get("ul[class='hmenu hmenu-visible hmenu-translateX'] li:nth-child(15) a:nth-child(1)").click()
-  cy.get('#p_123\/53581 > .a-list-item > .a-link-normal > .a-checkbox > label > .a-icon').check()
-})*/
+  az.setClickTabletaccesories()
+  az.setClickJtech()
+})
+it('should sort JTECH Newest Arrivals', () =>{
+  cy.visit('https://www.amazon.com/')
+  az.setHamburger()
+  az.setClickComputers()
+  az.setClickTabletaccesories()
+  az.setClickJtech()
+})
 
   })
